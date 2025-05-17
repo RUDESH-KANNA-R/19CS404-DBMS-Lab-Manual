@@ -1,5 +1,4 @@
 # Experiment 2: DDL Commands
-
 ## AIM
 To study and implement DDL commands and different types of constraints.
 
@@ -105,123 +104,186 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+![Screenshot (5)](https://github.com/user-attachments/assets/f7d7607d-8baf-4ffe-a214-db98e989df98)
+
 
 ```sql
--- Paste your SQL code below for Question 1
+CREATE TABLE Locations(
+LocationID INTEGER,
+LocationName TEXT ,
+Address TEXT
+)
 ```
 
 **Output:**
 
-![Output1](output.png)
+![Screenshot (6)](https://github.com/user-attachments/assets/518cf3e1-7e77-4e73-b3b3-e537f9b7de21)
 
 **Question 2**
 ---
--- Paste Question 2 here
+![Screenshot (7)](https://github.com/user-attachments/assets/939c72de-af93-4e07-9e32-386aa4bc5157)
+
 
 ```sql
--- Paste your SQL code below for Question 2
+INSERT INTO Employee(EmployeeID,Name,Position,Department,Salary)
+VALUES('001','Sarah Parker','Manager','HR',60000)
 ```
 
 **Output:**
 
-![Output2](output.png)
+![Screenshot (8)](https://github.com/user-attachments/assets/ce5fc351-352f-4e34-89a1-40e781ace476)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+![Screenshot (9)](https://github.com/user-attachments/assets/64ed3439-f72e-4c6f-9c21-3c858d64d6da)
+
 
 ```sql
--- Paste your SQL code below for Question 3
+CREATE TABLE Products(
+ProductID PRIMARY KEY,
+ProductName NOT NULL,
+Price REAL CHECK(Price>0),
+Stock INTEGER CHECK(Stock>0)
+)
 ```
 
 **Output:**
 
-![Output3](output.png)
+![Screenshot (10)](https://github.com/user-attachments/assets/f7b93714-87e1-4616-ac58-225ebbfa6be0)
+
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+![Screenshot (11)](https://github.com/user-attachments/assets/cc6e6d5e-f6b4-4b8f-bea5-7a73e19dd55f)
+
 
 ```sql
--- Paste your SQL code below for Question 4
+CREATE TABLE item(
+item_id TEXT PRIMARY KEY,
+item_desc TEXT NOT NULL,
+rate INTEGER NOT NULL,
+icom_id TEXT(4),
+
+FOREIGN KEY  (icom_id) REFERENCES company(com_id)
+    ON UPDATE SET NULL
+    ON DELETE SET NULL
+)
 ```
 
 **Output:**
 
-![Output4](output.png)
+![Screenshot (12)](https://github.com/user-attachments/assets/193c4486-be33-477b-a202-a6f1e0bd5415)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+![Screenshot (13)](https://github.com/user-attachments/assets/ffdad1e8-7725-45e5-a55e-a19e3a142354)
+
 
 ```sql
--- Paste your SQL code below for Question 5
+INSERT INTO Books(ISBN,Title,Author,Publisher,YearPublished)
+SELECT ISBN,Title,Author,Publisher,YearPublished
+FROM Out_of_print_books
 ```
 
 **Output:**
 
-![Output5](output.png)
+![Screenshot (14)](https://github.com/user-attachments/assets/481433a7-0e39-4298-a8ac-2ffc8daa8e34)
 
 **Question 6**
 ---
--- Paste Question 6 here
+![Screenshot (15)](https://github.com/user-attachments/assets/299a14b8-cd80-4051-988c-46a4f763d0ef)
+
 
 ```sql
--- Paste your SQL code below for Question 6
+ALTER TABLE customer
+ADD COLUMN birth_date timestamp
 ```
 
 **Output:**
 
-![Output6](output.png)
+![Screenshot (16)](https://github.com/user-attachments/assets/a72fc7dc-a78a-4a57-88f7-66aeaffd5987)
 
 **Question 7**
 ---
--- Paste Question 7 here
+![Screenshot (17)](https://github.com/user-attachments/assets/ced5aed5-0fe7-4665-8c4c-55591e48398f)
+
 
 ```sql
--- Paste your SQL code below for Question 7
+ALTER TABLE Companies
+ADD COLUMN designation varchar(50);
+
+ALTER TABLE Companies
+ADD COLUMN net_salary number;
+
+ALTER TABLE Companies
+ADD COLUMN dob date;
 ```
 
 **Output:**
 
-![Output7](output.png)
+![Screenshot (18)](https://github.com/user-attachments/assets/ccaf83ba-02c7-46ee-9254-315d8cf08849)
 
 **Question 8**
 ---
--- Paste Question 8 here
+![Screenshot (19)](https://github.com/user-attachments/assets/eb820353-6a29-410f-bc8f-a73d19e1a835)
 
 ```sql
--- Paste your SQL code below for Question 8
+CREATE TABLE products(
+product_id INTEGER PRIMARY KEY,
+product_name TEXT NOT NULL,
+list_price DECIMAL(10 ,2) NOT NULL,
+discount DECIMAL(10,2) NOT NULL DEFAULT 0,
+CHECK(list_price>=discount and discount>=0 and list_price >=0)
+)
 ```
 
 **Output:**
 
-![Output8](output.png)
+![Screenshot (20)](https://github.com/user-attachments/assets/9d638414-d6d4-42bb-8711-c0474a3bda16)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+![Screenshot (21)](https://github.com/user-attachments/assets/55d7d893-4c0c-4fab-9f62-4895697b4d4a)
+
 
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE item(
+item_id TEXT PRIMARY KEY,
+item_desc TEXT NOT NULL,
+rate INTEGER NOT NULL,
+icom_id TEXT(4),
+FOREIGN KEY (icom_id) REFERENCES company(com_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+)
 ```
 
 **Output:**
 
-![Output9](output.png)
+![Screenshot (22)](https://github.com/user-attachments/assets/2693f1ba-52cf-450d-aeb9-951d141a52e4)
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+![Screenshot (23)](https://github.com/user-attachments/assets/36b2dc60-2fda-4d18-a29d-7de2543b065a)
+
 
 ```sql
--- Paste your SQL code below for Question 10
+CREATE TABLE Events(
+EventID INTEGER,
+EventName TEXT,
+EventDate DATE
+)
 ```
 
 **Output:**
 
-![Output10](output.png)
+![Screenshot (24)](https://github.com/user-attachments/assets/be484bf8-4e90-459b-a310-dd07ca51b55c)
+
 
 
 ## RESULT
