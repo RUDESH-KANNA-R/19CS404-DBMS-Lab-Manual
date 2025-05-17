@@ -1,5 +1,4 @@
 # Experiment 5: Subqueries and Views
-## REG NO 212222060173
 ## AIM
 To study and implement subqueries and views.
 
