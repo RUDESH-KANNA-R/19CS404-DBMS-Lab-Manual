@@ -1,5 +1,4 @@
 # Experiment 9: PL/SQL – Procedures and Functions
-
 ## AIM
 To understand and implement procedures and functions in PL/SQL for performing various operations such as calculations, decision-making, and looping.
 
@@ -64,6 +63,20 @@ Key Differences:
 Square of 6 is 36
 
 ---
+```
+CREATE OR REPLACE PROCEDURE find_square (num IN NUMBER) IS
+   square NUMBER;
+BEGIN
+   square := num * num;
+   DBMS_OUTPUT.PUT_LINE('Square of ' || num || ' is ' || square);
+END;
+/
+To call the procedure with input 6:
+BEGIN
+   find_square(6);
+END;
+/
+```
 
 ## 2. Write a PL/SQL Function to Return the Factorial of a Number
 
@@ -78,6 +91,29 @@ Square of 6 is 36
 Factorial of 5 is 120
 
 ---
+```CREATE OR REPLACE FUNCTION get_factorial(n IN NUMBER) RETURN NUMBER IS
+   result NUMBER := 1;
+BEGIN
+   IF n < 0 THEN
+      RETURN NULL; -- Factorial not defined for negative numbers
+   END IF;
+
+   FOR i IN 1..n LOOP
+      result := result * i;
+   END LOOP;
+
+   RETURN result;
+END;
+/
+To call the function and display the result:
+DECLARE
+   fact NUMBER;
+BEGIN
+   fact := get_factorial(5);
+   DBMS_OUTPUT.PUT_LINE('Factorial of 5 is ' || fact);
+END;
+/
+```
 
 ## 3. Write a PL/SQL Procedure to Check Whether a Number is Even or Odd
 
@@ -91,7 +127,23 @@ Factorial of 5 is 120
 12 is Even
 
 ---
+```
+CREATE OR REPLACE PROCEDURE check_even_odd(num IN NUMBER) IS
+BEGIN
+   IF MOD(num, 2) = 0 THEN
+      DBMS_OUTPUT.PUT_LINE(num || ' is Even');
+   ELSE
+      DBMS_OUTPUT.PUT_LINE(num || ' is Odd');
+   END IF;
+END;
+/
+To call the procedure with input 12:
 
+BEGIN
+   check_even_odd(12);
+END;
+/
+```
 ## 4. Write a PL/SQL Function to Return the Reverse of a Number
 
 ### Steps:
@@ -105,7 +157,31 @@ Factorial of 5 is 120
 Reversed number of 1234 is 4321
 
 ---
+```
+CREATE OR REPLACE FUNCTION reverse_number(n IN NUMBER) RETURN NUMBER IS
+   reversed_num NUMBER := 0;
+   temp_num NUMBER := n;
+   digit NUMBER;
+BEGIN
+   WHILE temp_num > 0 LOOP
+      digit := MOD(temp_num, 10);
+      reversed_num := reversed_num * 10 + digit;
+      temp_num := TRUNC(temp_num / 10);
+   END LOOP;
 
+   RETURN reversed_num;
+END;
+/
+To call the function and display the reversed number:
+DECLARE
+   original NUMBER := 1234;
+   reversed NUMBER;
+BEGIN
+   reversed := reverse_number(original);
+   DBMS_OUTPUT.PUT_LINE('Reversed number of ' || original || ' is ' || reversed);
+END;
+/
+```
 ## 5. Write a PL/SQL Procedure to Display the Multiplication Table of a Number
 
 ### Steps:
@@ -121,6 +197,21 @@ Multiplication table of 5:
 5 x 3 = 15  
 ...  
 5 x 10 = 50
+```
+CREATE OR REPLACE PROCEDURE print_table(num IN NUMBER) IS
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Multiplication table of ' || num || ':');
+   FOR i IN 1..10 LOOP
+      DBMS_OUTPUT.PUT_LINE(num || ' x ' || i || ' = ' || (num * i));
+   END LOOP;
+END;
+/
+To call the procedure for number 5:
 
+BEGIN
+   print_table(5);
+END;
+/
+```
 ## RESULT
 Thus, the PL/SQL programs using procedures and functions were written, compiled, and executed successfully.
